@@ -1,103 +1,154 @@
-import Image from "next/image";
+import { HomeTemplate } from "@/components/template/HomeTemplate";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // Data that would typically come from an API or CMS
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Shop", href: "/shop" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  const hero = {
+    imageSrc: "/img1.jpg",
+    title: "Discover Our New Collection",
+    subtitle: "New Arrival",
+    description: "Aku ga tau mau isi apa jadi bebas aja yah",
+    ctaText: "BUY NOW",
+  };
+
+  const featuredProducts = [
+    {
+      id: "1",
+      title: "Solid Wood TV Stand",
+      description: "Strong & sleek",
+      price: "Rp1.399.000",
+      originalPrice: "Rp1.800.000",
+      imageSrc: "/img8.jpg",
+      discount: "-22.3%",
+    },
+    {
+      id: "2",
+      title: "Rattan Lounge Chair",
+      description: "Relaxed & tropical",
+      price: "Rp2.250.000",
+      imageSrc: "/img7.jpg",
+    },
+    {
+      id: "3",
+      title: "Minimalist Wooden Chair",
+      description: "Sleek & clean look",
+      price: "Rp679.000",
+      originalPrice: "Rp850.000",
+      imageSrc: "/img6.jpg",
+      discount: "-20.1% OF",
+    },
+    {
+      id: "4",
+      title: "Modern Bookshelf",
+      description: "Stylish & modern",
+      price: "Rp899.000",
+      originalPrice: "Rp1.200.000",
+      imageSrc: "/img9.jpg",
+      isNew: true,
+    },
+    {
+      id: "5",
+      title: "Foldable Study Desk",
+      description: "Compact & portable",
+      price: "Rp519.000",
+      imageSrc: "/img10.jpg",
+    },
+    {
+      id: "6",
+      title: "Queen Bed Frame",
+      description: "Elegant & solid",
+      price: "Rp4.500.000",
+      imageSrc: "/Img15.jpg",
+      isNew: true,
+    },
+    {
+      id: "7",
+      title: "Wooden Dining Chair",
+      description: "Minimalist & elegant",
+      price: "Rp599.000",
+      originalPrice: "Rp750.000",
+      imageSrc: "/img12.jpg",
+      discount: "-20.1%",
+    },
+    {
+      id: "8",
+      title: "Minimalist Wall Clock",
+      description: "Clean modern design",
+      price: "Rp270.000",
+      imageSrc: "/img16.jpg",
+      isNew: true,
+    },
+  ];
+
+  const roomInspiration = {
+    title: "50+ Beautiful rooms inspiration",
+    description:
+      "Our designer already made a lot of beautiful prototype of rooms that inspire you",
+    ctaText: "Explore More",
+    image: {
+      src: "/img5.jpg",
+      alt: "Room inspiration",
+    },
+  };
+
+  const socialGallery = {
+    title: "Share your setup with",
+    hashtag: "FuniroFurniture",
+    images: [
+      { src: "/room/Img1.jpg", alt: "User furniture" },
+      { src: "/room/Img2.jpg", alt: "User furniture" },
+      { src: "/room/Img3.jpg", alt: "User furniture" },
+      { src: "/room/Img4.jpg", alt: "User furniture" },
+      { src: "/room/Img5.jpg", alt: "User furniture" },
+      { src: "/room/Img6.jpg", alt: "User furniture" },
+      { src: "/room/Img7.jpg", alt: "User furniture" },
+      { src: "/room/Img8.jpg", alt: "User furniture" },
+    ],
+  };
+
+  const footerSections = [
+    {
+      title: "Links",
+      links: [
+        { label: "Home", href: "/" },
+        { label: "Shop", href: "/shop" },
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
+      ],
+    },
+    {
+      title: "Help",
+      links: [
+        { label: "Payment Options", href: "/payment" },
+        { label: "Returns", href: "/returns" },
+        { label: "Privacy Policies", href: "/privacy" },
+      ],
+    },
+  ];
+
+  return (
+    <HomeTemplate
+      navItems={navItems}
+      hero={hero}
+      featuredProducts={featuredProducts}
+      roomInspiration={roomInspiration}
+      socialGallery={socialGallery}
+      footerSections={footerSections}
+      companyInfo={{
+        name: "Furniro",
+        address: [
+          "400 University Drive Suite 200 Coral",
+          "Gables,",
+          "FL 33134 USA",
+        ],
+        copyrightText: `${new Date().getFullYear()} furniro. All rights reserved`,
+      }}
+    />
   );
 }

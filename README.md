@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Furniro - Furniture E-commerce Website
 
-## Getting Started
+A modern furniture e-commerce website built with Next.js, TypeScript, and Tailwind CSS, following Atomic Design principles.
 
-First, run the development server:
+## Features
 
-```bash
+- Responsive design for all device sizes
+- Component-based architecture using Atomic Design
+- Built with Next.js App Router
+- Styled with Tailwind CSS
+- Type-safe with TypeScript
+
+## Installation
+
+1. Clone the repository:
+
+\`\`\`bash
+git clone https://github.com/yourusername/furniro.git
+cd furniro
+\`\`\`
+
+2. Install dependencies:
+
+\`\`\`bash
+npm install
+
+# or
+
+yarn install
+
+# or
+
+pnpm install
+\`\`\`
+
+3. Run the development server:
+
+\`\`\`bash
 npm run dev
+
 # or
+
 yarn dev
+
 # or
+
 pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project follows Atomic Design principles with the following structure:
 
-## Learn More
+\`\`\`
+/components
+/atoms # Basic building blocks
+Button.tsx
+Input.tsx
+Typography.tsx
+Badge.tsx
+Separator.tsx
+/molecules # Combinations of atoms
+FormField.tsx
+ProductCard.tsx
+NewsletterForm.tsx
+/organisms # Complex components
+Header.tsx
+Footer.tsx
+ProductGrid.tsx
+HeroSection.tsx
+/templates # Page layouts
+MainLayout.tsx
+HomeTemplate.tsx
+/app # Next.js App Router pages
+page.tsx # Home page
+layout.tsx # Root layout
+/types # TypeScript type definitions
+/lib # Utility functions
+\`\`\`
 
-To learn more about Next.js, take a look at the following resources:
+## Atomic Design Implementation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project strictly follows Atomic Design principles:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Atoms**: Basic building blocks like Button, Input, Typography
+2. **Molecules**: Combinations of atoms like ProductCard, FormField
+3. **Organisms**: Complex components like Header, Footer, ProductGrid
+4. **Templates**: Page layouts like HomeTemplate
+5. **Pages**: Actual pages in the app directory
 
-## Deploy on Vercel
+## Props Implementation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Consistent prop naming conventions
+- TypeScript interfaces for type safety
+- Shared types in `/types` directory
+- Default props using destructuring
+- Proper prop drilling with organized prop objects
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tailwind CSS Implementation
+
+- Consistent use of utility classes
+- Custom theme configuration in `tailwind.config.js`
+- Responsive design for all screen sizes
+- Component variants using class-variance-authority (cva)
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
