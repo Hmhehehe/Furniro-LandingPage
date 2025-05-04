@@ -59,6 +59,7 @@ export interface HomeTemplateProps {
   roomInspiration?: {
     title?: string;
     description?: string;
+    text?: string;
     ctaText?: string;
     image?: {
       src: string;
@@ -104,11 +105,7 @@ export function HomeTemplate({
   footerSections,
   companyInfo = {
     name: "Furniro",
-    address: [
-      "400 University Drive Suite 200 Coral",
-      "Gables,",
-      "FL 33134 USA",
-    ],
+    address: ["Primakara University", "Tukad Badung, Renon", "Bali, Indonesia"],
     copyrightText: `${new Date().getFullYear()} furniro. All rights reserved`,
   },
 }: HomeTemplateProps) {
@@ -141,6 +138,7 @@ export function HomeTemplate({
           <RoomInspirationSection
             title={roomInspiration.title}
             description={roomInspiration.description}
+            text={roomInspiration.text}
             ctaText={roomInspiration.ctaText}
             imageSrc={roomInspiration.image?.src}
             imageAlt={roomInspiration.image?.alt}

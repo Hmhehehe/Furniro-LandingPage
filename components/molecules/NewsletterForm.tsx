@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/atoms/Button";
+import { Input } from "@/components/atoms/Input";
 import { Typography } from "../atoms/Typography";
 
 interface NewsletterFormProps {

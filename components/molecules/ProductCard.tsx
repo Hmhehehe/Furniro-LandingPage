@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Heart, ShoppingCart, Share2, BarChart2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/atoms/Button";
 import { Badge } from "../atoms/Badge";
 import { cn } from "@/lib/utils";
 import type { BaseProps, Product as ProductType } from "@/types";

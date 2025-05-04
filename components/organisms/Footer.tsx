@@ -22,7 +22,7 @@ interface FooterProps {
 
 export function Footer({
   companyName = "Funiro.",
-  address = ["400 University Drive Suite 200 Coral", "Gables,", "FL 33134 USA"],
+  address = ["Primakara University", "Tukad Badung, Renon,", "Bali, Indonesia"],
   sections,
   copyrightText = "2023 furino. All rights reserved",
 }: FooterProps) {

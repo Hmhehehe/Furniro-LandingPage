@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/atoms/Button";
 import { Typography } from "../atoms/Typography";
 
 interface RoomInspirationSectionProps {
   title?: string;
   description?: string;
+  text?: string;
   ctaText?: string;
   imageSrc?: string;
   imageAlt?: string;
@@ -13,6 +14,7 @@ interface RoomInspirationSectionProps {
 export function RoomInspirationSection({
   title = "50+ Beautiful rooms inspiration",
   description = "Our designer already made a lot of beautiful prototype of rooms that inspire you",
+  text = "halo",
   ctaText = "Explore More",
   imageSrc = "/img5.jpg",
   imageAlt = "Room inspiration",

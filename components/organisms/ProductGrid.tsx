@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/atoms/Button";
 import { ProductCard } from "../molecules/ProductCard";
 import { Typography } from "../atoms/Typography";
 import type { BaseProps, Product } from "@/types";
@@ -17,7 +17,6 @@ export function ProductGrid({
   products,
   showMoreText = "Show More",
   onShowMore,
-  className,
 }: ProductGridProps) {
   return (
     <section className="py-16">

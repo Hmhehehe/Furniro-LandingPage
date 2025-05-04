@@ -13,7 +13,7 @@ export default function Home() {
     imageSrc: "/img1.jpg",
     title: "Discover Our New Collection",
     subtitle: "New Arrival",
-    description: "Aku ga tau mau isi apa jadi bebas aja yah",
+    description: "Belanja murah ya di furniro saja!",
     ctaText: "BUY NOW",
   };
 
@@ -90,6 +90,7 @@ export default function Home() {
     title: "50+ Beautiful rooms inspiration",
     description:
       "Our designer already made a lot of beautiful prototype of rooms that inspire you",
+    text: "halo",
     ctaText: "Explore More",
     image: {
       src: "/img5.jpg",
@@ -143,9 +144,9 @@ export default function Home() {
       companyInfo={{
         name: "Furniro",
         address: [
-          "400 University Drive Suite 200 Coral",
-          "Gables,",
-          "FL 33134 USA",
+          "Primakara University",
+          "Tukad Badung, Renon,",
+          "Bali, Indonesia",
         ],
         copyrightText: `${new Date().getFullYear()} furniro. All rights reserved`,
       }}

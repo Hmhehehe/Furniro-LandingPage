@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Heart, Search, ShoppingCart, User, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/atoms/Button";
 
 interface NavItem {
   label: string;
