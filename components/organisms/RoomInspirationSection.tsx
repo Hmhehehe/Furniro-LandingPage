@@ -14,7 +14,6 @@ interface RoomInspirationSectionProps {
 export function RoomInspirationSection({
   title = "50+ Beautiful rooms inspiration",
   description = "Our designer already made a lot of beautiful prototype of rooms that inspire you",
-  text = "halo",
   ctaText = "Explore More",
   imageSrc = "/img5.jpg",
   imageAlt = "Room inspiration",

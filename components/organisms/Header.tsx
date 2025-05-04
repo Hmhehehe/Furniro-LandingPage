@@ -23,7 +23,14 @@ export function Header({ navItems, logoText = "Furniro" }: HeaderProps) {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-2">
           <Link href="/" className="text-xl font-bold">
-            <span className="text-amber-600">Fur</span>niro
+            {logoText.startsWith("Fur") ? (
+              <>
+                <span className="text-amber-600">Fur</span>
+                {logoText.slice(3)}
+              </>
+            ) : (
+              logoText
+            )}
           </Link>
         </div>
 
