@@ -22,9 +22,9 @@ interface FooterProps {
 
 export function Footer({
   companyName = "Funiro.",
-  address = ["Primakara University", "Tukad Badung, Renon,", "Bali, Indonesia"],
+  address = ["400 University Drive Suite 200 Coral", "Gables,", "FL 33134 USA"],
   sections,
-  copyrightText = "2023 furino. All rights reserved",
+  copyrightText = "2024 furino. All rights reserved", // Fixed: static default
 }: FooterProps) {
   return (
     <footer className="bg-white pt-16 pb-8 border-t">

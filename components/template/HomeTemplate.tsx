@@ -8,17 +8,6 @@ import { RoomInspirationSection } from "../organisms/RoomInspirationSection";
 import { SocialGallery } from "../organisms/SocialGallery";
 
 // Define types for all the props needed by child components
-export interface Product {
-  id: string;
-  title: string;
-  description: string;
-  price: string;
-  originalPrice?: string;
-  imageSrc: string;
-  discount?: string;
-  isNew?: boolean;
-}
-
 export interface NavItem {
   label: string;
   href: string;
@@ -50,16 +39,10 @@ export interface HomeTemplateProps {
     ctaText: string;
   };
 
-  // Product sections
-  featuredProducts: Product[];
-  productSectionTitle?: string;
-  showMoreProductsText?: string;
-
   // Room inspiration section
   roomInspiration?: {
     title?: string;
     description?: string;
-    text?: string;
     ctaText?: string;
     image?: {
       src: string;
@@ -90,11 +73,6 @@ export function HomeTemplate({
   // Hero section
   hero,
 
-  // Product sections
-  featuredProducts,
-  productSectionTitle = "Our Products",
-  showMoreProductsText = "Show More",
-
   // Room inspiration section
   roomInspiration,
 
@@ -105,15 +83,14 @@ export function HomeTemplate({
   footerSections,
   companyInfo = {
     name: "Furniro",
-    address: ["Primakara University", "Tukad Badung, Renon", "Bali, Indonesia"],
-    copyrightText: `${new Date().getFullYear()} furniro. All rights reserved`,
+    address: [
+      "400 University Drive Suite 200 Coral",
+      "Gables,",
+      "FL 33134 USA",
+    ],
+    copyrightText: "2024 furniro. All rights reserved", // Fixed: no dynamic date
   },
 }: HomeTemplateProps) {
-  const handleShowMoreProducts = () => {
-    console.log("Show more products clicked");
-    // In a real app, you might fetch more products or navigate to a products page
-  };
-
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header navItems={navItems} />
@@ -127,18 +104,13 @@ export function HomeTemplate({
           ctaText={hero.ctaText}
         />
 
-        <ProductGrid
-          title={productSectionTitle}
-          products={featuredProducts}
-          showMoreText={showMoreProductsText}
-          onShowMore={handleShowMoreProducts}
-        />
+        {/* ProductGrid now fetches its own data */}
+        <ProductGrid title="Our Products" limit={8} />
 
         {roomInspiration && (
           <RoomInspirationSection
             title={roomInspiration.title}
             description={roomInspiration.description}
-            text={roomInspiration.text}
             ctaText={roomInspiration.ctaText}
             imageSrc={roomInspiration.image?.src}
             imageAlt={roomInspiration.image?.alt}
