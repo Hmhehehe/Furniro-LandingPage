@@ -19,6 +19,7 @@ export function useAuth() {
         email,
         password,
         options: {
+          emailRedirectTo: undefined,
           data: {
             name: name,
           },
@@ -28,43 +29,41 @@ export function useAuth() {
       console.log("📧 Auth signup result:", {
         user: authData.user?.id,
         email: authData.user?.email,
-        error: authError,
+        emailConfirmed: authData.user?.email_confirmed_at,
+        error: authError?.message,
       });
 
       if (authError) {
         console.error("❌ Auth error:", authError);
-        throw authError;
+        throw new Error(authError.message);
       }
 
       if (authData.user) {
-        console.log("✅ User created in auth, now creating profile...");
+        console.log("✅ Auth user created, attempting to create profile...");
 
-        // Wait a moment for the trigger to potentially work
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-
-        // Check if profile was created by trigger
+        // Try to create user profile with detailed error handling
         try {
-          const existingProfile = await db.getUserById(authData.user.id);
-          console.log(
-            "✅ Profile already exists (trigger worked):",
-            existingProfile
+          const userProfile = await db.createUser(
+            authData.user.id,
+            email,
+            name
           );
+          console.log("✅ User profile created successfully:", userProfile);
+        } catch (profileError) {
+          console.error("⚠️ Profile creation failed:", profileError);
+
+          // Don't fail the entire signup - the auth user was created successfully
+          console.log(
+            "⚠️ Continuing with signup despite profile creation failure"
+          );
+
+          // Set a warning message but still return success
           return {
             success: true,
-            message: "Account created successfully! You can now sign in.",
+            message:
+              "Account created successfully! You can now sign in. (Profile will be created on first login)",
+            warning: "Profile creation had issues but account is ready",
           };
-        } catch (profileCheckError) {
-          console.log("⚠️ Profile doesn't exist, creating manually...");
-
-          // Create user profile manually
-          try {
-            await db.createUser(authData.user.id, email, name);
-            console.log("✅ User profile created manually");
-          } catch (createError) {
-            console.error("❌ Failed to create user profile:", createError);
-            // Don't throw here - the auth user was created successfully
-            console.log("⚠️ Profile creation failed but auth user exists");
-          }
         }
 
         return {
@@ -73,7 +72,7 @@ export function useAuth() {
         };
       }
 
-      return { success: true };
+      throw new Error("No user returned from signup");
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : "Sign up failed";
@@ -97,24 +96,25 @@ export function useAuth() {
       console.log("🔑 Auth signin result:", {
         user: authData.user?.id,
         email: authData.user?.email,
-        error: authError,
+        error: authError?.message,
       });
 
       if (authError) {
         console.error("❌ Auth signin error:", authError);
-        throw authError;
+        throw new Error(authError.message);
       }
 
       if (authData.user) {
+        console.log("👤 Fetching user profile for:", authData.user.id);
+
         try {
-          console.log("👤 Fetching user profile for:", authData.user.id);
           const userData = await db.getUserById(authData.user.id);
           console.log("✅ User profile fetched:", userData);
           setUser(userData);
         } catch (userError) {
           console.error("⚠️ Error fetching user profile:", userError);
 
-          // If user profile doesn't exist, create it
+          // Create profile if it doesn't exist
           console.log("🔧 Creating missing user profile...");
           try {
             const newUser = await db.createUser(
@@ -126,8 +126,21 @@ export function useAuth() {
             setUser(newUser);
           } catch (createError) {
             console.error("❌ Failed to create missing profile:", createError);
-            // Still allow login but without profile
-            setError("Profile creation failed, but you are logged in");
+
+            // Allow login even without profile - set minimal user data
+            console.log("⚠️ Proceeding with minimal user data");
+            setUser({
+              id: authData.user.id,
+              email: authData.user.email!,
+              name: authData.user.user_metadata?.name || "User",
+              phone: null,
+              address: null,
+              avatar_url: null,
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString(),
+            });
+
+            setError("Profile sync issues - some features may be limited");
           }
         }
       }

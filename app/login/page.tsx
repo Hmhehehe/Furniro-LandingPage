@@ -5,6 +5,7 @@ import type React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/atoms/Button";
 import { Input } from "@/components/atoms/Input";
 import { useAuth } from "@/hooks/useAuth";
@@ -40,19 +41,16 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left side - Gradient Background */}
-      <div className="hidden lg:flex lg:w-1/2 relative bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative z-10 flex items-center justify-center w-full">
-          <div className="text-center text-white">
-            <h1 className="text-4xl font-bold mb-4">Welcome Back!</h1>
-            <p className="text-xl opacity-90">
-              Sign in to continue your furniture journey
-            </p>
-          </div>
-        </div>
+      {/* Left side - Image only */}
+      <div className="hidden lg:flex lg:w-1/2 relative">
+        <Image
+          src="/img17.jpg"
+          alt="Furniture showcase"
+          fill
+          className="object-cover"
+          priority
+        />
       </div>
-
       {/* Right side - Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gray-50">
         <div className="w-full max-w-md space-y-8">
